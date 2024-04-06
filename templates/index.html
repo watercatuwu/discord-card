@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html data-bs-theme="dark">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Discord card</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+        <style>
+            body{font-family: Open Sans; background-color: #1e1f22;}
+            a{color: #FFF;}
+            .icon{font-size: 1.25rem;}
+            .btn-discord{background-color: #5865f2;}
+            .btn-discord:hover, .btn-discord:active{background-color: #4752c4;}
+            .card-color{background-color: #111214;}
+            .card-footer{background-color: #2b2d31;}
+        </style>
+    </head>
+    <body>
+        {% if not user %}
+        <div class="d-flex align-items-center justify-content-center" style="height: 100vh">
+            <a type="button" class="btn btn-discord shadow" href="/login"><i class="bi bi-discord"></i> Login with Discord</a>
+        </div>
+        {% else %}
+        <div class="d-flex p-4 align-items-center justify-content-center" style="height: 100vh">
+            <div class="card p-2 w-50-lg rounded-3 border-0 shadow card-color">
+                <div class="card-body">
+                    <div class="row pb-2">
+                        <div class="col-8">
+                            <h4 class="card-title">{{ user["global_name"] }}</h5>
+                            <h6 class="card-subtitle mb-2 text-body-secondary">@{{ user["username"] }}</h6>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                        <div class="col-4">
+                            <img src="{{ user.avatar_url }}" class="w-50 h-auto rounded-3 float-end">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-10">
+                            <a href="https://github.com/{{ connections["github"]["name"] }}"><i class="bi bi-github icon align-bottom pe-2"></i></a>
+                            <a href="https://www.youtube.com/channel/{{ connections["youtube"]["id"] }}"><i class="bi bi-youtube icon align-bottom pe-2"></i></a>
+                            <a href="https://www.twitch.tv/{{ connections["twitch"]["name"] }}"><i class="bi bi-twitch icon align-bottom pe-2"></i></a>
+                        </div>
+                        <div class="col-2">
+                            <a href="/logout" class="float-end"><i class="bi bi-box-arrow-right icon"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    </body>
+</html>
